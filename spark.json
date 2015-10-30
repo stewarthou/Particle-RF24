@@ -1,0 +1,7 @@
+{
+  "name": "particle-rf24",
+  "author": "Yunzhi Hou <public@stewarthou.me>",
+  "license": "GNU GENERAL PUBLIC LICENSE",
+  "version": "0.0.1",
+  "description": "An implementation of TMRh20's optimized RF24 Library for the Particle Photon."
+}
