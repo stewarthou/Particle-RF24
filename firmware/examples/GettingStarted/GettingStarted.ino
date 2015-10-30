@@ -1,5 +1,33 @@
-// If you included this library manually, please uncomment next line
-// #include "particle-rf24.h"
+/*
+* Getting Started example sketch for nRF24L01+ radios
+* This is a very basic example of how to send data from one node to another
+* Updated: Dec 2014 by TMRh20
+*/
+
+//
+// Hardware configuration
+// from https://github.com/mshoemaker/SparkCore-RF24
+
+/*
+  PINOUTS
+  http://docs.spark.io/#/firmware/communication-spi
+  http://maniacbug.wordpress.com/2011/11/02/getting-started-rf24/
+
+  SPARK CORE    SHIELD SHIELD    NRF24L01+
+  GND           GND              1 (GND)
+  3V3 (3.3V)    3.3V             2 (3V3)
+  D6 (CSN)      9  (D6)          3 (CE)
+  A2 (SS)       10 (SS)          4 (CSN)
+  A3 (SCK)      13 (SCK)         5 (SCK)
+  A5 (MOSI)     11 (MOSI)        6 (MOSI)
+  A4 (MISO)     12 (MISO)        7 (MISO)
+
+  NOTE: Also place a 10-100uF cap across the power inputs of
+        the NRF24L01+.  I/O o fthe NRF24 is 5V tolerant, but
+        do NOT connect more than 3.3V to pin 1!!!
+ */
+
+#include "particle-rf24/particle-rf24.h"
 
 /****************** User Config ***************************/
 /***      Set this radio as radio number 0 or 1         ***/
@@ -16,18 +44,14 @@ bool role = 0;
 
 void setup() {
   Serial.begin(115200);
-  Serial.println(F("Particle-RF24/Examples/GettingStarted"));
+  Serial.println(F("Particle-RF24/Firmware/Examples/GettingStarted"));
   Serial.println(F("*** PRESS 'T' to begin transmitting to the other node"));
 
   radio.begin();
 
   // Set the PA Level low to prevent power supply related issues since this is a
  // getting_started sketch, and the likelihood of close proximity of the devices. RF24_PA_MAX is default.
-  radio.setPALevel(RF24_PA_MAX);
-
-  radio.setDataRate(RF24_250KBPS);
-
-  radio.setCRCLength(RF24_CRC_8);
+  radio.setPALevel(RF24_PA_LOW);
 
   // Open a writing and reading pipe on each radio, with opposite addresses
   if(radioNumber){
