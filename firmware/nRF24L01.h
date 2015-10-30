@@ -1,18 +1,6 @@
 /*
- * RF24 LIBRARY FOR SPARK CORE
- * =======================================================
- * Copy this into a new application at:
- * https://www.spark.io/build and go nuts!
- * -------------------------------------------------------
- *  Author: BDub
- * Website: http://technobly.com
- *    Date: Feb 19th 2014
- * =======================================================
- * https://github.com/technobly/SparkCore-RF24
- */
-
-/*
     Copyright (c) 2007 Stefan Engelke <mbox@stefanengelke.de>
+	Portions Copyright (C) 2011 Greg Copeland
 
     Permission is hereby granted, free of charge, to any person
     obtaining a copy of this software and associated documentation
@@ -35,9 +23,6 @@
     DEALINGS IN THE SOFTWARE.
 */
 
-#ifndef __NRF24L01_H__
-#define __NRF24L01_H__
-
 /* Memory Map */
 #define CONFIG      0x00
 #define EN_AA       0x01
@@ -46,7 +31,7 @@
 #define SETUP_RETR  0x04
 #define RF_CH       0x05
 #define RF_SETUP    0x06
-#define STATUS      0x07
+#define NRF_STATUS  0x07
 #define OBSERVE_TX  0x08
 #define CD          0x09
 #define RX_ADDR_P0  0x0A
@@ -133,11 +118,10 @@
 
 /* P model memory Map */
 #define RPD         0x09
+#define W_TX_PAYLOAD_NO_ACK  0xB0
 
 /* P model bit Mnemonics */
 #define RF_DR_LOW   5
 #define RF_DR_HIGH  3
 #define RF_PWR_LOW  1
 #define RF_PWR_HIGH 2
-
-#endif // __NRF24L01_H__
