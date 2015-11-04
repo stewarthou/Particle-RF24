@@ -24,7 +24,7 @@
 
   NOTE: Also place a 10-100uF cap across the power inputs of
         the NRF24L01+.  I/O o fthe NRF24 is 5V tolerant, but
-        do NOT connect more than 3.3V to pin 1!!!
+        do NOT connect more than 3.3V to pin 2(3V3)!!!
  */
 
 #include "particle-rf24/particle-rf24.h"
